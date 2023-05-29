@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { BigNumber } from "ethers";
 import { NextPage } from "next";
 import { useScaffoldContractRead, useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
 
@@ -17,7 +18,7 @@ const DonationPage: NextPage = () => {
     contractName: "BuyMeAWei",
     functionName: "profiles",
     args: [address],
-  });
+  }) as { data: { handle?: string; name?: string; description?: string; pendingBalance?: BigNumber } };
 
   const [amount, setAmount] = useState(0);
 

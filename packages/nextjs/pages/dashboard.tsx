@@ -11,7 +11,15 @@ const Dashboard: NextPage = () => {
     contractName: "BuyMeAWei",
     functionName: "profiles",
     args: [address],
-  });
+  }) as {
+    data: {
+      handle?: string;
+      name?: string;
+      description?: string;
+      pendingBalance?: ethers.BigNumber;
+      totalDonations?: ethers.BigNumber;
+    };
+  };
 
   const { writeAsync } = useScaffoldContractWrite({
     contractName: "BuyMeAWei",
@@ -50,7 +58,7 @@ const Dashboard: NextPage = () => {
 
       <div className="flex items-center justify-center mt-8 gap-x-2">
         <p className="text-2xl text-gray-900">Pending Balance:</p>
-        <p className="text-2xl text-gray-900 font-bold">{ethers.utils.formatEther(profile.pendingBalance)} ETH</p>
+        <p className="text-2xl text-gray-900 font-bold">{ethers.utils.formatEther(profile.pendingBalance ?? 0)} ETH</p>
       </div>
 
       <div className="flex items-center justify-center mt-8 gap-x-2">
@@ -61,7 +69,7 @@ const Dashboard: NextPage = () => {
 
       <div className="flex items-center justify-center mt-8 gap-x-2">
         <p className="text-2xl text-gray-900">In total, you have received </p>
-        <p className="text-2xl text-gray-900 font-bold">{ethers.utils.formatEther(profile.totalDonations)} ETH</p>
+        <p className="text-2xl text-gray-900 font-bold">{ethers.utils.formatEther(profile.totalDonations ?? 0)} ETH</p>
       </div>
     </div>
   );
