@@ -33,7 +33,7 @@ const Home: NextPage = () => {
       </Head>
 
       <div className="flex items-center justify-center flex-grow flex-col">
-        <h1 className="text-4xl text-gray-900">Buy Me A Wei</h1>
+        <h1 className="text-4xl">Buy Me A Wei</h1>
 
         <form className="flex items-center justify-center mt-8 flex-col gap-y-2" onSubmit={submit}>
           <input
